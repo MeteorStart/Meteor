@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Meteor</string>
+    <string name="login">Login</string>
+    <string name="Username">Username</string>
+    <string name="Password">Password</string>
+    <string name="Go">Go</string>
+    <string name="forget_your_password">Forgot your password</string>
+    <string name="register">Register</string>
+    <string name="next">Next</string>
+    <string name="repeat_password">Repeat Password</string>
+</resources>
