@@ -13,6 +13,7 @@ import com.orhanobut.logger.*
 import com.squareup.leakcanary.RefWatcher
 import com.x_meteor.kotlindemo.utils.DisplayManager
 import com.x_meteor.kotlindemo.utils.LogUtils
+import java.util.*
 import kotlin.properties.Delegates
 
 /**
@@ -27,6 +28,11 @@ class MyApplication : Application() {
 
     private var refWatcher: RefWatcher? = null
 
+    /**
+     * 声明一个活动管理栈
+     */
+    private val activities = Stack<Activity>()
+
     companion object {
         private val TAG = "MyApplication"
 
@@ -36,6 +42,11 @@ class MyApplication : Application() {
         fun getRefWatcher(context: Context): RefWatcher? {
             val myApplication = context.applicationContext as MyApplication
             return myApplication.refWatcher
+        }
+
+        fun getActivities():Stack<Activity>{
+            val myApplication = context.applicationContext as MyApplication
+            return myApplication.activities
         }
 
         /**

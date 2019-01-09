@@ -1,12 +1,14 @@
 package com.x_meteor.kotlindemo.base
 
 import android.app.Activity
+import android.app.ProgressDialog
 import android.content.Context
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
+import android.widget.ProgressBar
 import com.classic.common.MultipleStatusView
 import com.hjq.permissions.OnPermission
 import com.hjq.permissions.XXPermissions
@@ -25,21 +27,19 @@ import java.util.*
  */
 abstract class BaseActivity : AppCompatActivity() {
 
+    //用于创建一个进度条对话框
+    private var dialog: ProgressDialog? = null
+
     /**
      * 多种状态的 View 的切换
      */
     protected var mLayoutStatusView: MultipleStatusView? = null
 
-    /**
-     * 声明一个活动管理栈
-     */
-    private val activities = Stack<Activity>()
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         //添加活动到活动栈中
-        activities.add(this)
+        MyApplication.getActivities().add(this)
 
         //打印当前类名
         val msg = this.localClassName
@@ -90,7 +90,7 @@ abstract class BaseActivity : AppCompatActivity() {
      * 退出所有活动并且退出当前应用
      */
     fun exitApplication() {
-        for (activity in activities) {
+        for (activity in MyApplication.getActivities()) {
             activity?.finish()
         }
         System.exit(0)
@@ -101,7 +101,7 @@ abstract class BaseActivity : AppCompatActivity() {
      * 退出所有活动并且退出所有活动
      */
     fun clearActicity() {
-        for (activity in activities) {
+        for (activity in MyApplication.getActivities()) {
             activity?.finish()
         }
     }
@@ -163,6 +163,31 @@ abstract class BaseActivity : AppCompatActivity() {
      */
     protected fun gotoPermissionSettings(context: Context) {
         XXPermissions.gotoPermissionSettings(context)
+    }
+
+    /**
+     * 功能 ：显示一个进度条对话框
+     */
+    protected fun showProcessDialog(title: String, msg: String, falg: Boolean) {
+        if (dialog == null) {
+            dialog = ProgressDialog(this)
+        }
+        dialog?.apply {
+            setTitle(title)
+            setMessage(msg)
+            setCancelable(falg)
+            show()
+        }
+
+    }
+
+    /**
+     * 功能 ：取消一个进度条对话框
+     */
+    protected fun dismissProcessDialog() {
+        if (dialog != null) {
+            dialog?.dismiss()
+        }
     }
 
     override fun onDestroy() {

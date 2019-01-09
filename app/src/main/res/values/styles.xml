@@ -17,4 +17,10 @@
         <item name="colorControlActivated">@color/app_color_theme_3</item>
     </style>
 
+    <!-- 设置错误提示文字样式 -->
+    <style name="errorAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/app_color_theme_1</item>
+    </style>
+
 </resources>

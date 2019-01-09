@@ -23,13 +23,9 @@ class RegisterActivity : BaseActivity(), UserContract.UserView {
 
     private lateinit var paw: String
 
-    private lateinit var rePaw: String
-
     private var etUser = false
 
     private var etPaw = false
-
-    private var etRePaw = false
 
     private val mPresenter by lazy {
         UserPresenterImp()
@@ -62,7 +58,7 @@ class RegisterActivity : BaseActivity(), UserContract.UserView {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 etUser = s?.length != 0
                 userName = s.toString()
-                setBtnEnable(etUser, etPaw, etRePaw)
+                setBtnEnable(etUser, etPaw)
             }
         })
 
@@ -78,24 +74,11 @@ class RegisterActivity : BaseActivity(), UserContract.UserView {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 etPaw = s?.length != 0
                 paw = s.toString()
-                setBtnEnable(etUser, etPaw, etRePaw)
+                setBtnEnable(etUser, etPaw)
             }
         })
 
-        et_repeatpassword.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-            }
 
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                etRePaw = s?.length != 0
-                rePaw = s.toString()
-                setBtnEnable(etUser, etPaw, etRePaw)
-            }
-
-        })
         btn_register.setOnClickListener {
             mPresenter.register(userName, paw)
         }
@@ -107,23 +90,23 @@ class RegisterActivity : BaseActivity(), UserContract.UserView {
     override fun jumpToMain() {
         ToastUtils.showToast("开始跳转")
         val intent = Intent(this, HomeActivity::class.java)
+        clearActicity()
         startActivity(intent)
-        finish()
     }
 
     override fun showError() {
     }
 
     override fun showLoading() {
-
+        showProcessDialog("注册中。。。", "", false)
     }
 
     override fun dismissLoading() {
-
+        dismissProcessDialog()
     }
 
-    fun setBtnEnable(etUser: Boolean, etPaw: Boolean, etRePaw: Boolean) {
-        btn_register.isEnabled = etUser && etPaw && etRePaw
+    fun setBtnEnable(etUser: Boolean, etPaw: Boolean) {
+        btn_register.isEnabled = etUser && etPaw
     }
 
     /**

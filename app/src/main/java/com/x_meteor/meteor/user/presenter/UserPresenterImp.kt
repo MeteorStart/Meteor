@@ -44,9 +44,7 @@ class UserPresenterImp : BasePresenter<UserContract.UserView>(), UserContract.Us
                     mRootView?.apply {
                         LogUtils.print("注册成功")
                         dismissLoading()
-                        if (userBean != null) {
-                            loginByBean(userBean)
-                        }
+                        login(userName, paw)
                     }
                 } else {
                     ToastUtils.showCenterToast(MyApplication.context, p1.message + "")
@@ -63,7 +61,7 @@ class UserPresenterImp : BasePresenter<UserContract.UserView>(), UserContract.Us
                     val userBean = BmobUser.getCurrentUser(UserBean::class.java)
                     p0?.setPassword(paw)
                     LogUtils.print(userBean.toString())
-                    //注册成功
+                    //登录成功
                     mRootView?.apply {
                         dismissLoading()
                         jumpToMain()
@@ -72,26 +70,6 @@ class UserPresenterImp : BasePresenter<UserContract.UserView>(), UserContract.Us
                     ToastUtils.showCenterToast(MyApplication.context, p1.message + "")
                 }
             }
-
-        })
-    }
-
-    fun loginByBean(userBean: UserBean) {
-        userBean.login(object : SaveListener<UserBean>() {
-            override fun done(p0: UserBean?, p1: BmobException?) {
-                if (p1 == null) {
-                    val userBean = BmobUser.getCurrentUser(UserBean::class.java)
-                    LogUtils.print(userBean.toString())
-                    //登录
-                    mRootView?.apply {
-                        dismissLoading()
-                        jumpToMain()
-                    }
-                } else {
-                    ToastUtils.showCenterToast(MyApplication.context, p1.message + "")
-                }
-            }
-
         })
     }
 }

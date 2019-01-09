@@ -36,6 +36,6 @@ class UserBean : BmobUser() {
     private val avatar: BmobFile? = null
 
     override fun toString(): String {
-        return "UserBean(nickname=$nickname, age=$age, gender=$gender, avatar=$avatar)"
+        return "UserBean(username=$username, nickname=$nickname, age=$age, gender=$gender, avatar=$avatar)"
     }
 }

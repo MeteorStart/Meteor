@@ -99,34 +99,34 @@
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
 
-                <LinearLayout
-                        android:paddingStart="50dp"
-                        android:paddingEnd="30dp"
-                        android:orientation="horizontal"
-                        android:layout_width="match_parent"
-                        android:layout_height="40dp">
+                <!--<LinearLayout-->
+                        <!--android:paddingStart="50dp"-->
+                        <!--android:paddingEnd="30dp"-->
+                        <!--android:orientation="horizontal"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="40dp">-->
 
-                    <android.support.design.widget.TextInputLayout
+                    <!--<android.support.design.widget.TextInputLayout-->
+                            <!--android:textColorHint="#f0f7f4"-->
+                            <!--android:id="@+id/tip_repaw"-->
+                            <!--android:theme="@style/TextLabel"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content">-->
 
-                            android:textColorHint="#f0f7f4"
-                            android:theme="@style/TextLabel"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                        <EditText
-                                android:textSize="16sp"
-                                android:textColor="#f0f7f4"
-                                android:hint="@string/repeat_password"
-                                android:id="@+id/et_repeatpassword"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="textPassword"
-                                android:background="@drawable/selector_bg_edit_register"
-                                android:textCursorDrawable="@drawable/bg_input_cursor_2"
-                                android:paddingBottom="2dp"
-                                />
-                    </android.support.design.widget.TextInputLayout>
-                </LinearLayout>
+                        <!--<EditText-->
+                                <!--android:textSize="16sp"-->
+                                <!--android:textColor="#f0f7f4"-->
+                                <!--android:hint="@string/repeat_password"-->
+                                <!--android:id="@+id/et_repeatpassword"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:inputType="textPassword"-->
+                                <!--android:background="@drawable/selector_bg_edit_register"-->
+                                <!--android:textCursorDrawable="@drawable/bg_input_cursor_2"-->
+                                <!--android:paddingBottom="2dp"-->
+                                <!--/>-->
+                    <!--</android.support.design.widget.TextInputLayout>-->
+                <!--</LinearLayout>-->
 
                 <Button
                         android:layout_marginTop="20dp"
