@@ -6,6 +6,7 @@ import android.app.Application
 import android.app.PendingIntent
 import android.content.Context
 import android.content.pm.ApplicationInfo
+import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.util.Log
 import cn.bmob.v3.Bmob
@@ -13,6 +14,9 @@ import com.orhanobut.logger.*
 import com.squareup.leakcanary.RefWatcher
 import com.x_meteor.kotlindemo.utils.DisplayManager
 import com.x_meteor.kotlindemo.utils.LogUtils
+import org.litepal.LitePal
+import org.litepal.LitePalApplication
+import org.litepal.tablemanager.Connector
 import java.util.*
 import kotlin.properties.Delegates
 
@@ -24,7 +28,7 @@ import kotlin.properties.Delegates
  * @company:
  * @email: lx802315@163.com
  */
-class MyApplication : Application() {
+class MyApplication : LitePalApplication() {
 
     private var refWatcher: RefWatcher? = null
 
@@ -44,7 +48,7 @@ class MyApplication : Application() {
             return myApplication.refWatcher
         }
 
-        fun getActivities():Stack<Activity>{
+        fun getActivities(): Stack<Activity> {
             val myApplication = context.applicationContext as MyApplication
             return myApplication.activities
         }
@@ -69,8 +73,12 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
+        //初始化Logger
         initLogger()
+        //初始化Bmob
         initBmob()
+        //初始化LitePal 数据库
+        LitePal.initialize(this)
         DisplayManager.init(this)
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)
     }

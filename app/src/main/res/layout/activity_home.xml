@@ -5,13 +5,25 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context="com.x_meteor.meteor.user.view.HomeActivity">
+        tools:context=".user.view.HomeActivity">
 
-    <TextView
-            android:layout_width="wrap_content"
-            android:text="首页"
-            android:layout_centerInParent="true"
-            android:textSize="36dp"
-            android:layout_height="wrap_content"/>
+    <android.support.v4.view.ViewPager
+            android:id="@+id/vpHome"
+            android:layout_width="match_parent"
+            android:layout_above="@+id/bottomMain"
+            android:layout_height="match_parent">
 
+    </android.support.v4.view.ViewPager>
+
+    <com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx
+            android:id="@+id/bottomMain"
+            android:layout_alignParentBottom="true"
+            android:background="@color/color_white"
+            app:menu="@menu/menu_bottom_main"
+            app:itemIconTint="@color/select_main_item_color"
+            app:itemTextColor="@color/select_main_item_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+    </com.ittianyu.bottomnavigationviewex.BottomNavigationViewEx>
 </RelativeLayout>

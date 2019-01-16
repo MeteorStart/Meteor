@@ -25,8 +25,14 @@ import java.util.concurrent.TimeUnit
 
 object RetrofitManager {
 
+    var baseUrl: String = ""
+
     val service: ApiService by lazy(LazyThreadSafetyMode.SYNCHRONIZED) {
-        getRetrofit().create(ApiService::class.java)
+        if (baseUrl == "") {
+            getRetrofit().create(ApiService::class.java)
+        } else {
+            getRetrofit(baseUrl).create(ApiService::class.java)
+        }
     }
 
     private var token: String by Preference("token", "")
@@ -99,6 +105,19 @@ object RetrofitManager {
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(UrlConstant.BASE_URL)  //自己配置
+            .client(getOkHttpClient())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(buildGson()))
+            .build()
+
+    }
+
+    /**
+     * 获取retrofit的实例
+     */
+    private fun getRetrofit(baseUrl: String): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(baseUrl)  //自己配置
             .client(getOkHttpClient())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .addConverterFactory(GsonConverterFactory.create(buildGson()))

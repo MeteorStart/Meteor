@@ -3,8 +3,12 @@ package com.x_meteor.meteor
 import android.content.Intent
 import com.x_meteor.kotlindemo.base.BaseActivity
 import com.x_meteor.kotlindemo.utils.LogUtils
-import com.x_meteor.meteor.user.view.HomeActivity
+import com.x_meteor.meteor.user.view.LoginActivity
 import com.x_meteor.meteor.widget.SplashView
+import cn.bmob.v3.BmobUser
+import com.x_meteor.meteor.user.model.bean.UserBean
+import com.x_meteor.meteor.user.view.HomeActivity
+
 
 class SplashActivity : BaseActivity() {
     override fun layoutId() = R.layout.activity_splash
@@ -21,7 +25,16 @@ class SplashActivity : BaseActivity() {
 
                 override fun onSplashViewDismiss(initiativeDismiss: Boolean) {
                     LogUtils.print("时间到")
-                    val intent = Intent(this@SplashActivity, HomeActivity::class.java)
+                    val bmobUser = BmobUser.getCurrentUser(UserBean::class.java)
+                    //需要添加登录情况验证
+                    val intent = if (bmobUser != null) {
+                        //跳转到首页
+                        Intent(this@SplashActivity, HomeActivity::class.java)
+                    } else {
+                        //跳转到登录页
+                        Intent(this@SplashActivity, LoginActivity::class.java)
+                    }
+
                     startActivity(intent)
                     finish()
                 }

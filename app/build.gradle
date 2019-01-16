@@ -90,6 +90,8 @@ dependencies {
     implementation(rootProject.ext.glideOkhttp) {
         exclude group: 'glide-parent'
     }
+    //数据库LitePal数据库
+    implementation 'org.litepal.android:kotlin:3.0.0'
     //Bmob数据云服务
     implementation rootProject.ext.bmobLibs
     //smartRefreshLayout 下拉刷新

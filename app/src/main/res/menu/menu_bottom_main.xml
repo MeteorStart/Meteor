@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+            android:id="@+id/btn_report"
+            android:checked="true"
+            android:icon="@drawable/select_day_report"
+            android:title="@string/home_day_report"
+            />
+
+    <item
+            android:id="@+id/btn_movie"
+            android:title="@string/home_movie"
+            android:icon="@drawable/select_movie"
+            />
+    <item
+            android:id="@+id/btn_developer"
+            android:icon="@drawable/select_developer"
+            android:title="@string/home_developer"
+            />
+
+    <item
+            android:id="@+id/btn_welfare"
+            android:icon="@drawable/select_welfare"
+            android:title="@string/home_welfare"
+            />
+
+    <item
+            android:id="@+id/btn_my"
+            android:icon="@drawable/select_my"
+            android:title="@string/home_my"
+            />
+</menu>

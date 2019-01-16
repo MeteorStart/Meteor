@@ -22,4 +22,5 @@ class UserModel {
     fun login(userName: String, paw: String, loginListener: LogInListener<UserBean>) {
         BmobUser.loginByAccount(userName, paw, loginListener)
     }
+
 }

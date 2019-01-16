@@ -22,7 +22,9 @@
     <!-- white -->
     <color name="color_white">#FFFFFF</color>
     <color name="color_black">#000000</color>
-
+    <color name="color_gray">#9a9a9a</color>
+    <color name="color_gray_ce">#cecece</color>
+    <color name="color_gray_8e">#8e8e8e</color>
     <color name="color_blue">#87CEEB</color>
 
     <!-- item 标题颜色 -->

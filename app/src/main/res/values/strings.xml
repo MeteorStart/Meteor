@@ -1,11 +1,25 @@
 <resources>
     <string name="app_name">Meteor</string>
-    <string name="login">Login</string>
-    <string name="Username">Username</string>
-    <string name="Password">Password</string>
+    <string name="login">登录</string>
+    <string name="Username">请输入用户名</string>
+    <string name="Password">请输入密码</string>
     <string name="Go">Go</string>
-    <string name="forget_your_password">Forgot your password</string>
-    <string name="register">Register</string>
-    <string name="next">Next</string>
-    <string name="repeat_password">Repeat Password</string>
+    <string name="forget_your_password">忘记密码？</string>
+    <string name="register">注册</string>
+    <string name="next">完成注册</string>
+    <string name="repeat_password">确认密码</string>
+
+    <string name="home_day_report">日报</string>
+    <string name="home_movie">电影</string>
+    <string name="home_developer">开发</string>
+    <string name="home_welfare">福利</string>
+    <string name="home_my">我的</string>
+
+    <string name="loading_text">加载中&#8230;</string>
+    <string name="no_network">请检查网络后点击重新加载</string>
+    <string name="data_error">数据获取失败(ㄒoㄒ)~~</string>
+    <string name="empty_view_hint">暂时木有内容呀~~</string>
+
+    <string name="search_transition_name">transition_reveal</string>
+
 </resources>
